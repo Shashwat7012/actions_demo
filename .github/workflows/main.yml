@@ -1,17 +1,15 @@
 name: CI CD Pipeline
-
-on: 
+on:
     push:
-
 jobs:
     build:
-         runs-on: ubuntu-latest
-         steps:
+        runs-on: ubuntu-latest
+        steps:
             - name: Clone Code
               uses: actions/checkout@v4
 
             - name: shell
               run: |
-                    docker ps
-
-            
+                docker build -t docker.io/shashwat701/demo_frontend:v2 .
+                echo  ${{ secrets.DOCKERHUB_PASSWORD }} | docker login -u ${{ secrets.DOCKERHUB_USERNAME }} --password-stdin
+                docker push docker.io/shashwat701/demo_frontend:v2
