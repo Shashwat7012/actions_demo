@@ -8,10 +8,10 @@ jobs:
          runs on: ubuntu latest
          steps:
             - name: Clone Code
-            uses: actions/checkout@4
+              uses: actions/checkout@4
 
             - name: shell
-            run: |
-            docker ps
+              run: |
+                    docker ps
 
             
